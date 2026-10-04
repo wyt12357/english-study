@@ -1129,6 +1129,8 @@ img.hero-icon { border-radius: 24%; object-fit: cover; }
   .container { padding-bottom: env(safe-area-inset-bottom, 20px); }
   .btn { -webkit-tap-highlight-color: transparent; }
   .btn:active { transform: scale(0.94) !important; }
+  /* 手机端按钮紧凑化：全局按钮缩小 */
+  .btn { padding: 8px 16px; font-size: 14px; border-radius: 12px; }
   .card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
   .card:active { transform: scale(0.98); }
   .option-box:active { transform: scale(0.98); background: rgba(238,242,255,0.9); }
@@ -1515,6 +1517,18 @@ html[data-theme="dark"] #menu-grid .tile-bank { --tile-fg: #60a5fa; --tile-bg: r
 html[data-theme="dark"] #menu-grid .tile-rank { --tile-fg: #a5b4fc; --tile-bg: rgba(99,102,241,0.18); }
 html[data-theme="dark"] #menu-grid .tile-pwa { --tile-fg: #34d399; --tile-bg: rgba(16,185,129,0.16); }
 html[data-theme="dark"] #menu-grid .tile-logout { --tile-fg: #f87171; --tile-bg: rgba(239,68,68,0.16); }
+
+/* --- 手机端主页磁贴：双列紧凑排布（须位于上方 v3 层之后才能正确覆盖） --- */
+@media (max-width: 600px) {
+  #menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  #menu-grid .btn { padding: 14px 6px; font-size: 13.5px; gap: 6px; border-radius: 14px; white-space: nowrap; }
+  #menu-grid .btn svg { width: 30px; height: 30px; }
+  #menu-grid .tile-start { padding: 14px 6px; font-size: 14.5px; }
+  #menu-grid .tile-start svg { width: 36px; height: 36px; }
+  /* 手机端吸底操作条按钮：单行不换行（按钮带内联样式，需 !important 覆盖） */
+  #page-setup .flex.gap-2 .btn { white-space: nowrap; padding: 9px 8px !important; font-size: 13.5px !important; }
+  #page-setup .flex.gap-2 .btn svg { width: 14px; height: 14px; }
+}
 
 /* ============================================================
    ★ 排版优化层 v4：桌面双栏 / Bento 磁贴 / 选项双列 / 吸底操作条
